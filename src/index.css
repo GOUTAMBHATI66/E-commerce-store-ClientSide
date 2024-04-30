@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .search-bar {
+    @apply lg:w-[240px] xl:w-[280px] bg-slate-100 rounded-full px-3 py-1 focus:outline-none dark:bg-gray-800;
+  }
+}
+
+.slideAnimation {
+  animation: slideAnimation 0.3s ease forwards;
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* custom sidebar for products in cart  */
+.custome-slidebar::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0;
+}
+
+/* .custome-slidebar::-webkit-scrollbar-track {
+  background-color: transparent;
+} */
+
+/* main group sidebar */
+.main-scrollbar::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+  height: 5px;
+  border-radius: 2px;
+}
+.main-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+.main-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-400/60 rounded-lg transition-all duration-200  hover:bg-gray-400/70 dark:bg-gray-600 dark:hover:bg-gray-500;
+}
