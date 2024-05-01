@@ -18,12 +18,15 @@ const SingleProduct = () => {
     setSingleProduct,
     setClicked,
     setSelected,
+    singleProductTitle,
   } = useContext(Context);
 
   const [quantity, setQuantity] = useState(1);
-
+  console.log(singleProduct);
   const { id, category } = useParams();
   // console.log(category);
+
+  console.log(singleProductTitle);
 
   useEffect(() => {
     if (category === "men") getMenSingleProduct(id);
@@ -88,7 +91,8 @@ const SingleProduct = () => {
     <>
       <div className=" py-10 ">
         <div className="container">
-          {!singleProduct ? (
+          {Object.entries(singleProduct).length === 0 ||
+          singleProductTitle !== singleProduct.attributes?.title ? (
             <SingleProductSkeleton />
           ) : (
             <div className="flex flex-col gap-8 md:flex-row place-items-center sm:items-start sm:justify-center  ">

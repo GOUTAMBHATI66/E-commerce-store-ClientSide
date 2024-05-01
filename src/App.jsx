@@ -15,6 +15,7 @@ import AppContext from "./utils/context";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import CheckOut from "./components/CheckOut";
+import ScrollTo from "./components/ScrollTo";
 
 const App = () => {
   useEffect(() => {
@@ -29,9 +30,10 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className=" bg-white dark:bg-gray-900 dark:text-white duration-200">
+      <div className=" bg-white dark:bg-gray-900 dark:text-white duration-200 scroll-smooth">
         <AppContext>
           <Navbar />
+          <ScrollTo />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/men" element={<Men />} />

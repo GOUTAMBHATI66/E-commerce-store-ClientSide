@@ -8,6 +8,7 @@ import Cart from "../Home/Cart/Cart";
 import TopCategory from "../Home/TopCategory";
 import { Context } from "../../utils/context";
 import { RiUserLine } from "react-icons/ri";
+import { PiSignOut } from "react-icons/pi";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -81,7 +82,6 @@ const Navbar = () => {
                 />
                 <Link
                   onClick={() => {
-                    // handleSelectNavItem("");
                     setSelected(null);
                   }}
                   to="/"
@@ -169,7 +169,10 @@ const Navbar = () => {
                       onClick={() => onSingOut()}
                       className=" bg-gray-200 dark:bg-gray-600 my-1 font-semibold"
                     >
-                      <button>Sign Out</button>
+                      <button className="flex gap-1 items-center">
+                        {" "}
+                        <PiSignOut className=" text-base" /> Sign Out
+                      </button>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

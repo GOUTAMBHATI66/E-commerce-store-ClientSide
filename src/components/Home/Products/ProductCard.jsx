@@ -1,7 +1,9 @@
-import React from "react";
+import { Context } from "@/utils/context";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 
 const ProductCard = ({ Products }) => {
+  const { setSingleProductTitle } = useContext(Context);
   const navigate = useNavigate();
   // console.log(goutam);
 
@@ -11,13 +13,14 @@ const ProductCard = ({ Products }) => {
         <div
           key={item.id}
           className="flex flex-col gap-1 cursor-pointer "
-          onClick={() =>
+          onClick={() => {
+            setSingleProductTitle(item.attributes?.title);
             navigate(
-              `product/${item.id}/ ${item.attributes.title
+              `product/${item.id}/ ${item.attributes?.title
                 .split(" ")
                 .join("-")}`
-            )
-          }
+            );
+          }}
         >
           <div className="relative overflow-hidden rounded-md">
             <img
@@ -26,8 +29,8 @@ const ProductCard = ({ Products }) => {
             />
           </div>
 
-          <p className="font-semibold text-sm">{item.attributes.title}</p>
-          <p className="font-bold text-md">&#x20B9; {item.attributes.Price}</p>
+          <p className="font-semibold text-sm">{item.attributes?.title}</p>
+          <p className="font-bold text-md">&#x20B9; {item.attributes?.Price}</p>
         </div>
       ))}
     </div>

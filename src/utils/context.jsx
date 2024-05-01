@@ -49,6 +49,7 @@ const AppContext = ({ children }) => {
   const [selected, setSelected] = useState(null);
   const [singleProduct, setSingleProduct] = useState({});
   const [clicked, setClicked] = useState("");
+  const [singleProductTitle, setSingleProductTitle] = useState("");
 
   // handling add to beg section when user click on "add to beg" button
   const handleAddToBeg = (productObj, quantity) => {
@@ -162,6 +163,8 @@ const AppContext = ({ children }) => {
         setSingleProduct,
         clicked,
         setClicked,
+        singleProductTitle,
+        setSingleProductTitle,
       }}
     >
       {children}
