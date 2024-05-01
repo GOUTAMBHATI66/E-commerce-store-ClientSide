@@ -36,13 +36,13 @@ const CheckOut = () => {
     navigate("/");
   };
   return (
-    <div className=" fixed top-0 left-0 z-40 bg-gray-100 py-8 px-5 sm:px-10 h-full w-full text-black overflow-y-scroll scroll-smooth custome-slidebar">
+    <div className=" fixed top-0 left-0 z-40 bg-gray-100 py-8 px-5 md:px-0 lg:px-10 h-full w-full text-black overflow-y-scroll scroll-smooth custome-slidebar">
       <p className="text-center text-5xl font-semibold font-sans mb-8  text-gray-500">
         CheckOut
       </p>
-      <div className=" w-full sm:w-[90%] m-auto flex flex-col max-lg:items-center lg:flex-row  gap-4">
+      <div className=" w-full sm:w-[90%] m-auto flex flex-col max-md:items-center md:flex-row gap-8">
         {/* Billing Details */}
-        <div className=" flex flex-col gap-2 lg:w-[55%] h-full  ">
+        <div className=" flex flex-col gap-2 md:w-[45%] lg:w-[55%] w-full max-sm:px-5  ">
           <h2 className="pt-8 pb-3 border-b border-gray-300/80 font-semibold text-xl mb-2 ">
             Billing Details
           </h2>
@@ -104,7 +104,7 @@ const CheckOut = () => {
         </div>
 
         {/* Products Details */}
-        <div className=" flex flex-col gap-3 border border-gray-300 lg:w-[45%] h-[90%] pb-5 min-[500px]:px-5 ">
+        <div className=" flex flex-col gap-3 border border-gray-300 w-full md:w-[55%] lg:w-[45%] h-[90%] pb-5 px-5">
           <p className="font-semibold text-xl text-black pt-5 pb-3">
             Your Order
           </p>
@@ -129,7 +129,7 @@ const CheckOut = () => {
           <button
             disabled={!(firstName && secondName)}
             onClick={() => handlePlaceOrder()}
-            className=" bg-blue-600  disabled:bg-blue-300 text-white text-center text-xl font-semibold py-2"
+            className=" bg-blue-600 hover:bg-blue-700  disabled:bg-blue-300 text-white text-center text-xl font-semibold py-2 rounded-lg "
           >
             Place Order
           </button>

@@ -18,9 +18,31 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
 
+const NavLinks = [
+  {
+    id: 1,
+    link: "/men",
+    title: "Men",
+  },
+  {
+    id: 2,
+    link: "/women",
+    title: "Women",
+  },
+  {
+    id: 3,
+    link: "/kids",
+    title: "Kids",
+  },
+  {
+    id: 4,
+    link: "/electronics",
+    title: "Electronics",
+  },
+];
+
 const Navbar = () => {
   const {
-    navLinks,
     showCart,
     setShowCart,
     showMenuItems,
@@ -31,24 +53,10 @@ const Navbar = () => {
     setSelected,
   } = useContext(Context);
 
-  const [getNavLinks, setGetNavLinks] = useState([]);
   const isSingIn = localStorage.getItem("jwt") ? true : false;
   const userObj = JSON.parse(localStorage.getItem("user"));
 
   // console.log(userObj);
-  useEffect(() => {
-    getNavItems();
-  }, []);
-
-  const getNavItems = () => {
-    navLinks().then((res) => {
-      // console.log(res.data.data);
-      setGetNavLinks(res.data.data);
-    });
-  };
-
-  // console.log("2", getNavLinks);
-  // console.log("2", getNavLinks[0].attributes.title);
 
   // handling sign out button
   const navigate = useNavigate();
@@ -86,27 +94,26 @@ const Navbar = () => {
               {/* Menu items */}
               <div className="hidden md:block">
                 <ul className="flex items-center gap-4 lg:gap-2">
-                  {getNavLinks.map((data) => (
+                  {NavLinks.map((data) => (
                     <li
                       key={data.id}
                       onClick={() => {
-                        setSelected(data.attributes?.title);
+                        setSelected(data.title);
                       }}
                     >
                       <Link
-                        to={data.attributes?.link}
+                        to={data.link}
                         className={`inline-block px-1 lg:px-4 font-semibold text-gray-500 hover:text-black/80 dark:hover:text-white duration-200 ${
-                          theme === "light" &&
-                          data.attributes.title === selected
+                          theme === "light" && data.title === selected
                             ? " text-gray-950 text-xl "
                             : ""
                         } ${
-                          theme === "dark" && data.attributes.title === selected
+                          theme === "dark" && data.title === selected
                             ? " text-slate-100 text-xl"
                             : ""
                         }  `}
                       >
-                        {data.attributes?.title}
+                        {data.title}
                       </Link>
                     </li>
                   ))}
@@ -123,15 +130,17 @@ const Navbar = () => {
                   placeholder="Search For Products"
                   className="search-bar placeholder:font-normal pr-10 hidden lg:block"
                 />
-                <IoMdSearch className="text-xl max-[450px]:text-base text-gray-600 dark:text-gray-400 absolute top-1/2 right-0 lg:right-2 -translate-y-1/2 group-hover:text-primary duration-200" />
+                <IoMdSearch className="text-xl max-[450px]:text-lg text-gray-600 dark:text-gray-400 absolute top-1/2 right-0 lg:right-2 -translate-y-1/2 group-hover:text-primary duration-200" />
               </div>
 
               {/* Cart-button section */}
               <button
                 className="relative p-3"
-                onClick={() => setShowCart(true)}
+                onClick={() => {
+                  setShowCart(true);
+                }}
               >
-                <HiOutlineShoppingBag className="text-xl max-[450px]:text-base text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-black hover:dark:text-gray-300" />
+                <HiOutlineShoppingBag className="text-xl max-[450px]:text-lg text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-black hover:dark:text-gray-300" />
                 {cartItems.length ? (
                   <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full flex items-center justify-center text-xs h-4 w-4">
                     {cartItems.length}
@@ -148,7 +157,7 @@ const Navbar = () => {
               {isSingIn ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger>
-                    <RiUserLine className="text-xl ml-2 max-[450px]:text-base text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-black hover:dark:text-gray-300" />
+                    <RiUserLine className="text-xl ml-2 max-[450px]:text-lg text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-black hover:dark:text-gray-300" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuLabel>{userObj.username}</DropdownMenuLabel>

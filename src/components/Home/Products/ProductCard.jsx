@@ -6,7 +6,7 @@ const ProductCard = ({ Products }) => {
   // console.log(goutam);
 
   return (
-    <div className="grid grid-cols-1 min-[500px]:grid-cols-2  md:grid-cols-4 gap-8 place-items-center">
+    <div className="grid grid-cols-1 min-[500px]:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center">
       {Products.map((item) => (
         <div
           key={item.id}

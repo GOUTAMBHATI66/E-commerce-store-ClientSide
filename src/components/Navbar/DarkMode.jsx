@@ -26,13 +26,13 @@ const DarkMode = () => {
       {theme === "light" ? (
         <MdDarkMode
           // size={24}
-          className="border text-2xl max-[450px]:text-xl border-black/15 p-0.5 rounded-full cursor-pointer hover:border-1 hover:border-black"
+          className="border text-2xl border-black/15 p-0.5 rounded-full cursor-pointer hover:border-1 hover:border-black"
           onClick={() => handleOnClick("dark")}
         />
       ) : (
         <MdOutlineLightMode
           // size={24}
-          className="border text-2xl max-[450px]:text-xl border-gray-500 p-0.5 rounded-full cursor-pointer hover:border-1 hover:border-gray-300"
+          className="border text-2xl  border-gray-500 p-0.5 rounded-full cursor-pointer hover:border-1 hover:border-gray-300"
           onClick={() => handleOnClick("light")}
         />
       )}

@@ -2,22 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 @layer components {
   .search-bar {
     @apply lg:w-[240px] xl:w-[280px] bg-slate-100 rounded-full px-3 py-1 focus:outline-none dark:bg-gray-800;
   }
 }
 
-.slideAnimation {
-  animation: slideAnimation 0.3s ease forwards;
+.slideAnimationIn {
+  animation: slideAnimationIn 0.6s ease forwards;
 }
 
-@keyframes slideAnimation {
+@keyframes slideAnimationIn {
   0% {
     transform: translateX(100%);
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+.slideAnimationOut {
+  animation: slideAnimationOut 0.6s ease forwards;
+}
+
+@keyframes slideAnimationOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 

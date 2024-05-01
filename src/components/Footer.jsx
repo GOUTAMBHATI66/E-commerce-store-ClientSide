@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   FaMobileAlt,
@@ -7,25 +7,35 @@ import {
   FaFacebook,
   FaLinkedin,
 } from "react-icons/fa";
-import { useState } from "react";
 import { Context } from "@/utils/context";
 
+const NavLinks = [
+  {
+    id: 1,
+    link: "/men",
+    title: "Men",
+  },
+  {
+    id: 2,
+    link: "/women",
+    title: "Women",
+  },
+  {
+    id: 3,
+    link: "/kids",
+    title: "Kids",
+  },
+  {
+    id: 4,
+    link: "/electronics",
+    title: "Electronics",
+  },
+];
+
 const Footer = () => {
-  const { navLinks, setSelected } = useContext(Context);
+  const { setSelected } = useContext(Context);
 
-  const [getNavLinks, setGetNavLinks] = useState([]);
-
-  useEffect(() => {
-    getNavItems();
-  }, []);
-
-  const getNavItems = () => {
-    navLinks().then((res) => {
-      setGetNavLinks(res.data.data);
-    });
-  };
-
-  console.log(getNavLinks);
+  // console.log(getNavLinks);
 
   return (
     <div className=" border-t dark:border-none dark:bg-gray-950 ">
@@ -54,14 +64,14 @@ const Footer = () => {
             >
               <h1 className="font-bold text-xl">Important Links</h1>
               <ul className=" space-y-3">
-                {getNavLinks.map((item) => (
+                {NavLinks.map((item) => (
                   <li key={item.id}>
                     <Link
-                      onClick={() => setSelected(item.attributes?.title)}
-                      to={item.attributes?.link}
+                      onClick={() => setSelected(item.title)}
+                      to={item.link}
                       className=" text-gray-400 hover:text-black dark:hover:text-white hover:font-semibold duration-300"
                     >
-                      {item.attributes?.title}
+                      {item.title}
                     </Link>
                   </li>
                 ))}
@@ -74,14 +84,14 @@ const Footer = () => {
             >
               <h1 className="font-bold text-xl">Quick Links</h1>
               <ul className=" space-y-3">
-                {getNavLinks.map((item) => (
+                {NavLinks.map((item) => (
                   <li key={item.id}>
                     <Link
-                      onClick={() => setSelected(item.attributes?.title)}
-                      to={item.attributes?.link}
+                      onClick={() => setSelected(item.title)}
+                      to={item.link}
                       className=" text-gray-400 hover:text-black dark:hover:text-white hover:font-semibold duration-300"
                     >
-                      {item.attributes?.title}
+                      {item.title}
                     </Link>
                   </li>
                 ))}

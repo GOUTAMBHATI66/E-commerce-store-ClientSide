@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Headings from "./Shared/Headings";
 import ProductCard from "./Home/Products/ProductCard";
 import { Context } from "../utils/context";
+import CategorySkeleton from "./Skeletons/CategorySkeleton";
 
 const Men = () => {
   const { menProducts } = useContext(Context);
@@ -33,7 +34,11 @@ const Men = () => {
       <Headings title={"Top Products for Men"} />
 
       <div className="container ">
-        <ProductCard Products={shuffledArray} />
+        {MenProducts.length === 0 ? (
+          <CategorySkeleton />
+        ) : (
+          <ProductCard Products={shuffledArray} />
+        )}
       </div>
     </div>
   );

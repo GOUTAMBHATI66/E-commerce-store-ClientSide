@@ -20,24 +20,38 @@ const Cart = () => {
       navigate("/sign-in");
     }
   };
+
   return (
-    <div className=" z-40 w-full h-full top-0 left-0 fixed bg-black/40 flex">
+    <div
+      className="z-40 w-full h-full top-0 left-0 fixed 
+      bg-black/40
+       "
+    >
       <div
-        className="min-[501px]:w-2/5 sm:w-1/2 md:w-3/5 lg:w-2/3 max-[500px]:w-1/5"
-        onClick={() => setShowCart(false)}
+        className="min-[501px]:w-2/5 sm:w-1/2 md:w-3/5 lg:w-2/3 max-[500px]:w-1/5 "
+        onClick={() => {
+          console.log("Kya hua");
+          setShowCart(false);
+        }}
       ></div>
-      <div className="h-full flex flex-col gap-2 absolute top-0 right-0 bg-white dark:text-white min-[500px]:w-3/5 sm:w-1/2 dark:bg-gray-950 md:w-2/5 lg:w-1/3 max-[500px]:w-4/5 translate-x-full slideAnimation ">
+      <div
+        className={`h-full flex flex-col gap-2 absolute top-0 right-0 bg-white dark:text-white min-[500px]:w-3/5 sm:w-1/2 dark:bg-gray-950 md:w-2/5 lg:w-1/3 max-[500px]:w-4/5 translate-x-full 
+           slideAnimationIn
+         `}
+      >
         {/* Heading of Cart */}
         <div className="flex justify-between items-center py-4 mx-6 border-b dark:border-gray-500">
           <h1 className="font-bold text-2xl">Cart</h1>
           <IoClose
             className="text-2xl font-bold cursor-pointer rounded-full hover:bg-black/20 dark:hover:bg-slate-600"
-            onClick={() => setShowCart(false)}
+            onClick={() => {
+              setShowCart(false);
+            }}
           />
         </div>
 
         {cartItems.length ? (
-          <div className="flex flex-col justify-between h-full overflow-y-scroll custome-slidebar scroll-smooth w-full">
+          <div className="flex flex-col justify-between h-full overflow-y-scroll custome-slidebar scroll-smooth w-full ">
             <div className="flex flex-col h-[77%] w-full gap-2 overflow-y-scroll custome-slidebar scroll-smooth">
               {/* first item of cart */}
               {cartItems.map((item) => (
